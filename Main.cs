@@ -2,6 +2,9 @@
 using System.Windows;
 using Newtonsoft.Json;
 using Wox.Infrastructure.Http;
+using System.IO;
+using System.Text;
+using Wox.Infrastructure.Logger;
 
 namespace Wox.Plugin.Youdao
 {
@@ -26,9 +29,18 @@ namespace Wox.Plugin.Youdao
         public List<string> value { get; set; }
     }
 
+    public class YouDaoKey
+    {
+        public string keyfrom { get; set; }
+        public string key { get; set; }
+    }
+
     public class Main : IPlugin
     {
-        private const string TranslateUrl = "http://fanyi.youdao.com/openapi.do?keyfrom=WoxLauncher&key=1247918016&type=data&doctype=json&version=1.1&q=";
+        private string Key = "1247918016";
+        private string Keyfrom = "WoxLauncher";
+        private string TranslateUrl = "";
+        private const string TranslateUrlFormat = "http://fanyi.youdao.com/openapi.do?keyfrom={0}&key={1}&type=data&doctype=json&version=1.1&q=";
         private PluginInitContext _context;
 
         public List<Result> Query(Query query)
@@ -45,6 +57,37 @@ namespace Wox.Plugin.Youdao
                 });
                 return results;
             }
+
+            try
+            {
+                StreamReader sr = File.OpenText("Plugins/Wox.Plugin.Youdao/key.json");
+                StringBuilder jsonArrayText_tmp = new StringBuilder();
+                string input = null;
+                while ((input = sr.ReadLine()) != null)
+                {
+                    jsonArrayText_tmp.Append(input);
+                }
+                sr.Close();
+                string jsonArrayText = jsonArrayText_tmp.Replace(" ", "").ToString();
+
+                JsonTextReader reader = new JsonTextReader(new StringReader(jsonArrayText));
+                JsonSerializer serializer = new JsonSerializer();
+                YouDaoKey youdaokey = serializer.Deserialize<YouDaoKey>(reader);
+                if (youdaokey != null)
+                {
+                    Key = youdaokey.key;
+                    Keyfrom = youdaokey.keyfrom;
+                    Log.Debug("get key from key.json keyfrom=" + Keyfrom + " key=" + Key);
+                }
+            }
+            catch {
+
+            }
+
+            TranslateUrl = string.Format(TranslateUrlFormat, Keyfrom, Key);
+
+            Log.Info(TranslateUrl + query.Search);
+
             var json = Http.Get(TranslateUrl + query.Search).Result;
             TranslateResult o = JsonConvert.DeserializeObject<TranslateResult>(json);
             if (o.errorCode == 0)

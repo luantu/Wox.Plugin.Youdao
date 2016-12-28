@@ -11,3 +11,11 @@ C:\Users\Ricky\Documents\GitHub\Wox\Output\Release\Plugins\Wox.Plugin.Youdao\Wox
 C:\Users\Ricky\Documents\GitHub\Wox\Plugins\Wox.Plugin.Youdao\obj\Release\Wox.Plugin.Youdao.csprojResolveAssemblyReference.cache
 C:\Users\Ricky\Documents\GitHub\Wox\Plugins\Wox.Plugin.Youdao\obj\Release\Wox.Plugin.Youdao.dll
 C:\Users\Ricky\Documents\GitHub\Wox\Plugins\Wox.Plugin.Youdao\obj\Release\Wox.Plugin.Youdao.pdb
+F:\projects\OpenSource\Wox\Output\Release\Plugins\Wox.Plugin.Youdao\Images\youdao.ico
+F:\projects\OpenSource\Wox\Output\Release\Plugins\Wox.Plugin.Youdao\Wox.Plugin.Youdao.dll
+F:\projects\OpenSource\Wox\Output\Release\Plugins\Wox.Plugin.Youdao\key.json
+F:\projects\OpenSource\Wox\Output\Release\Plugins\Wox.Plugin.Youdao\plugin.json
+F:\projects\OpenSource\Wox\Output\Release\Plugins\Wox.Plugin.Youdao\Wox.Plugin.Youdao.pdb
+F:\projects\OpenSource\Wox\Plugins\Wox.Plugin.Youdao\obj\Release\Wox.Plugin.Youdao.csprojResolveAssemblyReference.cache
+F:\projects\OpenSource\Wox\Plugins\Wox.Plugin.Youdao\obj\Release\Wox.Plugin.Youdao.dll
+F:\projects\OpenSource\Wox\Plugins\Wox.Plugin.Youdao\obj\Release\Wox.Plugin.Youdao.pdb
